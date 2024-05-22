@@ -1,8 +1,9 @@
 #!/bin/bash
 
+cd ~
 echo "Selecciona la versión de PHP que se usará con Composer:"
 
-select VERSION in $(ls /opt/cpanel/ | grep "ea-php" | sort -n | sed 's/ea-php//' | sed 's/.$/\.&/')
+select VERSION in $(ls -1 /opt/cpanel/ea-php*/root/usr/bin/php | cut -d'/' -f4 | sed 's/ea-php//g' | sed 's/.$/\.&/')
 do
         PHP_VER="ea-php$(echo "$VERSION" | sed 's/\.//')"
 
